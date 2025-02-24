@@ -5,30 +5,30 @@ import { Link, usePage } from '@inertiajs/vue3';
 import type { Component } from 'vue';
 
 interface NavItem {
-    title: string;
-    url: string;
-    icon: Component;
+  title: string;
+  url: string;
+  icon: Component;
 }
 
 defineProps<{
-    items: NavItem[];
+  items: NavItem[];
 }>();
 
 const page = usePage<SharedData>();
 </script>
 
 <template>
-    <SidebarGroup class="px-2 py-0">
-        <SidebarGroupLabel>Platform</SidebarGroupLabel>
-        <SidebarMenu>
-            <SidebarMenuItem v-for="item in items" :key="item.title">
-                <SidebarMenuButton as-child :is-active="item.url === page.url">
-                    <Link :href="item.url">
-                        <component :is="item.icon" />
-                        <span>{{ item.title }}</span>
-                    </Link>
-                </SidebarMenuButton>
-            </SidebarMenuItem>
-        </SidebarMenu>
-    </SidebarGroup>
+  <SidebarGroup class="px-2 py-0">
+    <SidebarGroupLabel>Platform</SidebarGroupLabel>
+    <SidebarMenu>
+      <SidebarMenuItem v-for="item in items" :key="item.title">
+        <SidebarMenuButton as-child :is-active="item.url === page.url">
+          <Link :href="item.url">
+            <component :is="item.icon" />
+            <span>{{ item.title }}</span>
+          </Link>
+        </SidebarMenuButton>
+      </SidebarMenuItem>
+    </SidebarMenu>
+  </SidebarGroup>
 </template>
